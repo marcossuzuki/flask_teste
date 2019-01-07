@@ -1,6 +1,14 @@
 {% extends "template.html" %}
 {% block conteudo %}
-      <form method="POST" action="{{ url_for('adicionar') }}">
+      <form method="POST" action="{{ url_for('adicionar') }}"enctype="multipart/form-data">
+        <figure class="thumb col-md-4">
+            <img class="responsive-img" width="250" src="{{ url_for('imagem', nome_arquivo='capa_padrao.jpg') }}">
+            <figcaption>
+                <label>
+                    <input type="file" name="arquivo" accept=".jpg">
+                </label>
+            </figcaption>
+        </figure>
         <fieldset>
           <div class="form-group">
             <label for="nome">Nome</label>
@@ -15,6 +23,7 @@
             <input type="text" id="console" name="console" class="form-control">
           </div>
           <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+          <a class="btn red" href="{{ url_for('index') }}">Voltar</a>
         </fieldset>
       </form>
 {% endblock %}
